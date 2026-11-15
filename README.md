@@ -1,41 +1,40 @@
-# Bank Account Management System (C)
+# Student Management System (C)
 
 ## Objective
-A console-based mini banking application supporting account creation, deposits, withdrawals, balance enquiry and account listing. Account data is saved in a binary file.
+A menu-driven application to add, display, search, update and delete student records. Records are stored in a binary file so they remain available after the program closes.
 
 ## Compile and run
 ```bash
-gcc banking_system.c -o banking_system
-./banking_system
+gcc student_management.c -o student_management
+./student_management
 ```
 Windows PowerShell:
 ```powershell
-gcc banking_system.c -o banking_system.exe
-.\banking_system.exe
+gcc student_management.c -o student_management.exe
+.\student_management.exe
 ```
 
 ## Features
-- Create an account with a unique account number, holder name and opening balance.
-- Deposit money into an existing account.
-- Withdraw money while preventing overdrafts.
-- Check an account's balance.
-- Display all stored accounts.
-- Persist account data in `accounts.dat`.
+1. Add a student with ID, name, age, department and mark.
+2. Display all saved student records.
+3. Search for a student by ID.
+4. Update an existing student's details.
+5. Delete a student record by ID.
+6. Store records in `students.dat`.
 
 ## Concepts used
-Structures, functions, binary file handling, searching, loops, conditions, `switch-case` and arithmetic operations.
+Structures, functions, binary file handling (`fopen`, `fread`, `fwrite`, `fseek`, `fclose`), strings, loops, conditions and menu-driven programming.
 
 ## Test checklist
-1. Create an account with opening balance 1000.
-2. Enquire the balance; it should show 1000.
-3. Deposit 500; balance should become 1500.
-4. Withdraw 200; balance should become 1300.
-5. Attempt to withdraw 5000; transaction should be rejected.
-6. Try an unknown account number.
-7. Exit and restart; verify that the account remains stored.
+- Add two students with different IDs.
+- Display all records.
+- Search for an existing ID and a non-existing ID.
+- Update one student's details and display again.
+- Delete one student and confirm it no longer appears.
+- Close and reopen the application; confirm remaining records persist.
 
-## Important note
-This is an educational console project, not real banking software. It does not implement authentication, encryption, audit logs, transaction rollback or production-grade financial controls. The binary data file is intended only for this demonstration.
+## Data file
+The program creates `students.dat` in the current working directory. Do not delete this file if you want to keep the records. The file stores C structure records in binary format and is intended to be read by this program.
 
 ## Explanation
-An `Account` structure stores the account number, holder name and balance. Each menu operation is handled by a separate function. The application uses binary file operations to create, locate and update account records. Withdrawals are rejected if the requested amount exceeds the available balance.
+A `Student` structure groups each student's fields. Functions perform individual operations. The application reads and writes records in a binary data file. For deletion, it copies all records except the selected ID into a temporary file and then replaces the original file.
