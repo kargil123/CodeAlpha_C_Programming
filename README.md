@@ -1,35 +1,48 @@
-# Basic Calculator (C)
+# Matrix Operations (C)
 
 ## Objective
-Create a console-based calculator that performs addition, subtraction, multiplication and division using a `switch` statement.
-
-## Requirements
-- GCC compiler
-- VS Code or any C IDE
+Implement matrix addition, matrix multiplication and transpose using functions and two-dimensional arrays.
 
 ## Compile and run
 ```bash
-gcc calculator.c -o calculator
-./calculator
+gcc matrix.c -o matrix
+./matrix
 ```
-On Windows:
+Windows PowerShell:
 ```powershell
-gcc calculator.c -o calculator.exe
-.\calculator.exe
+gcc matrix.c -o matrix.exe
+.\matrix.exe
 ```
+
+## Features
+- Accepts matrices up to 10 x 10.
+- Adds matrices when their dimensions match.
+- Multiplies matrices when columns of A equal rows of B.
+- Calculates transpose for either matrix.
+- Displays the entered matrices through a menu.
 
 ## Concepts used
-Variables, `double`, formatted input/output, `switch-case`, conditional statements and arithmetic operators.
+2D arrays, functions, nested loops, conditions, `switch-case` and matrix arithmetic.
 
-## Test cases
-| First number | Operator | Second number | Expected result |
-|---:|:---:|---:|---|
-| 12 | + | 8 | 20.00 |
-| 12.5 | - | 2.5 | 10.00 |
-| 4 | * | 3 | 12.00 |
-| 10 | / | 2 | 5.00 |
-| 10 | / | 0 | Division-by-zero error |
-| 5 | % | 2 | Invalid operator |
+## Suggested test
+Matrix A (2 x 2): `1 2 / 3 4`
+Matrix B (2 x 2): `5 6 / 7 8`
+
+Expected A + B:
+```text
+6  8
+10 12
+```
+Expected A x B:
+```text
+19 22
+43 50
+```
+Expected transpose of A:
+```text
+1 3
+2 4
+```
 
 ## Explanation
-The program reads two numbers and an arithmetic operator. A `switch` statement selects the requested operation. Division checks whether the second number is zero before calculating the result.
+The program reads the dimensions and elements of two matrices. Separate functions perform addition, multiplication, transpose and display. Before addition or multiplication, the program checks the dimension rules to avoid invalid operations.
