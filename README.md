@@ -1,48 +1,41 @@
-# Matrix Operations (C)
+# Bank Account Management System (C)
 
 ## Objective
-Implement matrix addition, matrix multiplication and transpose using functions and two-dimensional arrays.
+A console-based mini banking application supporting account creation, deposits, withdrawals, balance enquiry and account listing. Account data is saved in a binary file.
 
 ## Compile and run
 ```bash
-gcc matrix.c -o matrix
-./matrix
+gcc banking_system.c -o banking_system
+./banking_system
 ```
 Windows PowerShell:
 ```powershell
-gcc matrix.c -o matrix.exe
-.\matrix.exe
+gcc banking_system.c -o banking_system.exe
+.\banking_system.exe
 ```
 
 ## Features
-- Accepts matrices up to 10 x 10.
-- Adds matrices when their dimensions match.
-- Multiplies matrices when columns of A equal rows of B.
-- Calculates transpose for either matrix.
-- Displays the entered matrices through a menu.
+- Create an account with a unique account number, holder name and opening balance.
+- Deposit money into an existing account.
+- Withdraw money while preventing overdrafts.
+- Check an account's balance.
+- Display all stored accounts.
+- Persist account data in `accounts.dat`.
 
 ## Concepts used
-2D arrays, functions, nested loops, conditions, `switch-case` and matrix arithmetic.
+Structures, functions, binary file handling, searching, loops, conditions, `switch-case` and arithmetic operations.
 
-## Suggested test
-Matrix A (2 x 2): `1 2 / 3 4`
-Matrix B (2 x 2): `5 6 / 7 8`
+## Test checklist
+1. Create an account with opening balance 1000.
+2. Enquire the balance; it should show 1000.
+3. Deposit 500; balance should become 1500.
+4. Withdraw 200; balance should become 1300.
+5. Attempt to withdraw 5000; transaction should be rejected.
+6. Try an unknown account number.
+7. Exit and restart; verify that the account remains stored.
 
-Expected A + B:
-```text
-6  8
-10 12
-```
-Expected A x B:
-```text
-19 22
-43 50
-```
-Expected transpose of A:
-```text
-1 3
-2 4
-```
+## Important note
+This is an educational console project, not real banking software. It does not implement authentication, encryption, audit logs, transaction rollback or production-grade financial controls. The binary data file is intended only for this demonstration.
 
 ## Explanation
-The program reads the dimensions and elements of two matrices. Separate functions perform addition, multiplication, transpose and display. Before addition or multiplication, the program checks the dimension rules to avoid invalid operations.
+An `Account` structure stores the account number, holder name and balance. Each menu operation is handled by a separate function. The application uses binary file operations to create, locate and update account records. Withdrawals are rejected if the requested amount exceeds the available balance.
